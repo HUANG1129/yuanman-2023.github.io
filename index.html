@@ -1,0 +1,1450 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>2023圆满赛事总结</title>
+    <link rel="stylesheet" href="https://static.fontawesome.com/css/fontawesome-app.css">
+    <!-- 引入字体图标 -->
+    <link rel="stylesheet" href="./font/iconfont.css">
+    <!-- 引入字体 -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400&display=swap">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            font-family: "Source Sans Pro", sans-serif;
+        }
+
+        /* 设置html和body元素为flex布局，水平和垂直居中对齐，高度为100vh，背景图大小为cover，溢出隐藏，背景图过渡动画时间为0.7秒 */
+        html,
+        html {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+        body {
+            height: 100vh;
+            overflow: hidden;
+            background: black;
+            margin-bottom: 50px;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-image: url("./img/ym2023L.jpg");
+            background-attachment: fixed;  
+            display: flex;
+            align-items: center;
+            background-size: 100% auto ;
+            justify-content: center;
+            @media screen and (orientation:portrait) {
+            align-items: flex;
+            background-size: auto 100%;
+            background-image:url("./img/ym2023S.jpg");
+        transform-origin: 0 0;
+        transform: rotateZ(90deg) translateY(-100%);
+    }
+    }
+        /* 设置.shell元素为相对定位，flex布局，水平和垂直居中对齐，宽度和高度为100%，盒模型为border-box，背景颜色为rgba(99, 99, 99, 0.8) */
+        .shell {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+            background-repeat: repeat;
+        }
+
+        /* 设置.button元素为flex布局，两端对齐，宽度为380px，绝对定位，左侧偏移量为50%，水平居中，底部偏移量为-80px */
+        .button {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 380px;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: -80px;
+            @media screen and (orientation:portrait)
+            {
+                bottom: 10px;
+            }
+        }
+        /* 设置.prev和.next元素过渡动画时间为0.25秒，层级为99999，底部偏移量为5px */
+        .prev,
+        .next {
+            transition: transform 0.25s ease;
+            z-index: 99999;
+            bottom: 5px;
+        }
+
+        /* 设置.prev和.next元素中的i元素字体大小为90px，颜色为#fff，光标为指针，文字阴影为0 0 10px #ffffff */
+        .prev i,
+        .next i {
+            font-size: 90px;
+            color: #fff;
+            cursor: pointer;
+            text-shadow: 0 0 10px #ffffff;
+            @media screen and (orientation:portrait)
+            {
+                font-size: 45px;
+            }
+        }
+
+        /* 设置.shell_body元素宽度为100%，缩放为0.8倍，上内边距为20px，下内边距为150px */
+        .shell_body {
+            width: 100%;
+            transform: scale(.8);
+            padding: 20px 0 150px 0;
+        }
+
+        /* 设置.shell_slider元素为相对定位，过渡动画时间为1秒，背景为透明 */
+        .shell_slider {
+            position: relative;
+            transition: transform 1s ease-in-out;
+            background: transparent;
+            top:30px;
+        }
+
+        /* 设置.item元素为相对定位，左浮动，左右外边距为20px */
+        .item {
+            position: relative;
+            float: left;
+            margin: 0 20px;
+        }
+
+        /* 设置.frame元素为相对定位，宽度和高度为100%，过渡动画时间为1秒，3D变换模式为保留3D效果 */
+        .frame {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 1s ease-in-out;
+            transform-style: preserve-3d;
+        }
+
+        /* 设置.frame元素的伪元素为绝对定位，底部偏移量为-16%，宽度为100%，高度为60px，背景颜色为#ffffff1c，盒阴影为0px 0px 15px 5px #ffffff1c，3D变换为绕X轴旋转90度并向上平移20px */
+        .frame:after {
+            content: "";
+            position: absolute;
+            bottom: -16%;
+            width: 100%;
+            height: 60px;
+            background: #ffffff1c;
+            box-shadow: 0px 0px 15px 5px #ffffff1c;
+            transform: rotateX(90deg) translate3d(0px, -20px, 0px);
+        }
+
+        /* 设置.box元素为flex布局，纵向排列，水平和垂直居中对齐，绝对定位，宽度和高度为100%，边框为4px实心白色，透视效果为1000px，3D变换模式为保留3D效果 */
+        .box {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 4px solid #fff;
+            perspective: 1000px;
+            transform-style: preserve-3d;
+        }
+        .box img{
+            position: absolute;
+            top: 20px;
+            width: 80%;
+            height: 15%;
+            object-fit: contain;
+            @media screen and (orientation:portrait)
+            {
+                top: 15px;
+            }
+        }
+        /* 设置.box元素中的h1和span元素颜色为#fff，Z轴平移距离为20px */
+        .box h1,
+        .box span {
+            color: #fff;
+            transform: translateZ(20px);
+        }
+
+        .box h1 {
+            text-shadow: 0 0 30px #1f05b4;
+            font-size: 18px;
+            position: absolute;
+            top: 70px;
+            @media screen and (orientation:portrait)
+            {
+                top: 50px;
+            }
+        }
+
+        .box span {
+            position: absolute;
+            top: 110px;
+            padding: 0 25px;
+            text-shadow: 0 0 10px #1f05b4;
+            @media screen and (orientation:portrait)
+            {
+                top: 100px;
+            }
+        }
+
+        /* 设置.front、.left和.right元素的盒阴影为0 0 50px #ffffff，背景图大小为cover */
+        .front,
+        .left,
+        .right {
+            box-shadow: 0 0 50px #ffffff;
+            background-size: cover;
+        }
+
+        /* 设置.left和.right元素的顶部偏移量为0，宽度为60px，背面不可见 */
+        .right,
+        .left {
+            top: 0;
+            width: 60px;
+            backface-visibility: hidden;
+        }
+
+        /* 设置.left元素的左侧偏移量为0，左边框宽度为5px，3D变换为向右平移1px，Z轴平移-60px，绕Y轴逆时针旋转90度，变换原点为左侧 */
+        .left {
+            left: 0;
+            border-left-width: 5px;
+            transform: translate3d(1px, 0, -60px) rotateY(-90deg);
+            transform-origin: 0%;
+        }
+
+        /* 设置.right元素的右侧偏移量为0，右边框宽度为5px，3D变换为向左平移1px，Z轴平移-60px，绕Y轴顺时针旋转90度，变换原点为右侧 */
+        .right {
+            right: 0;
+            border-right-width: 5px;
+            transform: translate3d(-1px, 0, -60px) rotateY(90deg);
+            transform-origin: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="shell">
+        <div class="shell_body">
+            
+            <div class="button">
+                <div class="prev"><i class="iconfont icon-backward_filled"></i></div>
+                <div class="next"><i class="iconfont icon-forward_filled"></i></div>
+            </div>
+
+            <div class="shell_slider">
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/wtt1.png" alt="" class="img" >
+                            <h1>WTT球星挑战赛果阿</h1>
+                            <span>
+                                <p>🐰林高远</p>
+                                <p>男单八强</p>
+                                <p>3-1勒贝松➡️3-2卡尔森➡️1-3梁靖崑</p>
+                                </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/wtt2.png" alt="" class="img" >
+                            <h1>WTT新加坡大满贯</h1>
+                            <span>
+                                <p>🐟王曼昱</p>
+                                <p>女单四强</p>
+                                <p>3-0李皓晴➡️3-0木原美悠➡️3-1阿德里安娜·迪亚兹➡️4-1杨晓欣➡️0-4孙颖莎 ​</p>
+                            </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/wtt2.png" alt="" class="img" >
+                            <h1>WTT新加坡大满贯</h1>
+                            <span>
+                                <p>🐟王曼昱</p>
+                                <p>女双冠军🥇</p>
+                                <p>（搭档孙颖莎）</p>
+                                <p>3-0陈思羽/李皓晴➡️3-1朱成竹/杜凯琹➡️3-0申裕斌/田志希➡️3-2陈梦/王艺迪 ​ ​</p>
+                            </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/wtt2.png" alt="" class="img" >
+                            <h1>WTT新加坡大满贯</h1>
+                            <span>
+                                <p>🐟王曼昱</p>
+                                <p>混双四强</p>
+                                <p>（搭档樊振东）</p>
+                                <p>3-1梅谢芙/阿萨尔➡️3-2斯佐科斯/约内斯库➡️3-1卡尔伯格/莫雷加德➡️0-3早田希娜/张本智和​ ​</p>
+                            </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/wtt2.png" alt="" class="img" >
+                            <h1>WTT新加坡大满贯</h1>
+                            <span>
+                                <p>🐰林高远</p>
+                                <p>男单四强</p>
+                                <p>3-0格拉斯门科➡️3-2张禹珍➡️3-2梁靖崑➡️1-4王楚钦</p>
+                            </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/wtt3.png" alt="" class="img" >
+                            <h1>WTT新乡冠军赛</h1>
+                            <span>
+                                <p>🐟王曼昱</p>
+                                <p>女单八强</p>
+                                <p>3-2蒂娜•梅谢芙➡️3-0高桥·布鲁娜➡️2-3陈幸同​</p>
+                            </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/wtt3.png" alt="" class="img" >
+                            <h1>WTT澳门冠军赛</h1>
+                            <span>
+                                <p>🐟王曼昱</p>
+                                <p>女单冠军🥇</p>
+                                <p>3-0索菲亚·波尔卡诺娃➡️3-0刘杨子➡️3-1钱天一➡️4-2王艺迪➡️4-2陈梦​</p>
+                            </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/wtt1.png" alt="" class="img" >
+                            <h1>WTT球星挑战赛曼谷</h1>
+                            <span>
+                                <p>🐰林高远</p>
+                                <p>男单冠军🥇</p>
+                                <p>3-1托米斯拉夫·普卡➡️3-0黄镇廷➡️3-0利亚姆·皮切福特󠁧󠁢󠁥󠁮󠁧󠁿➡️3-0袁励岑➡️4-3张禹珍 ​​</p>
+                            </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/wtt1.png" alt="" class="img" >
+                            <h1>WTT球星挑战赛曼谷</h1>
+                            <span>
+                                <p>🐰林高远</p>
+                                <p>男双冠军🥇</p>
+                                <p>（搭档林诗栋）</p>
+                                <p>3-0巴德/皮卡德➡️3-0陈颢桦/姚钧涛➡️3-1安宰贤/赵胜敏➡️3-0张禹珍/林钟勋 ​</p>
+                            </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/wtt1.png" alt="" class="img" >
+                            <h1>WTT球星挑战赛曼谷</h1>
+                            <span>
+                                <p>🐰林高远</p>
+                                <p>混双冠军🥇</p>
+                                <p>（搭档陈幸同）</p>
+                                <p>3-1林诗栋/蒯曼➡️3-0沃克/霍婷婷󠁧󠁢󠁥󠁮󠁧󠁿➡️3-0户上隼辅/张本美和➡️3-2林钟勋/申裕斌 ​</p>
+                            </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/durban.png" alt="" class="img" >
+                            <h1>德班世乒赛</h1>
+                            <span>
+                                <p>🐟王曼昱</p>
+                                <p>女单八强</p>
+                                <p>4-0马特洛娃➡️4-3哈珀诺娃➡️4-1米特兰姆➡️0-4陈幸同 ​</p>
+                            </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/durban.png" alt="" class="img" >
+                            <h1>德班世乒赛</h1>
+                            <span>
+                                <p>🐟王曼昱</p>
+                                <p>女双四强🥉</p>
+                                <p>（搭档孙颖莎）</p>
+                                <p>3-0阿库拉/奇塔莱➡️3-0杜凯琹/朱成竹➡️3-0郑怡静/李昱谆➡️0-3田志希/申裕斌</p>
+                            </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/durban.png" alt="" class="img" >
+                            <h1>德班世乒赛</h1>
+                            <span>
+                                <p>🐰林高远</p>
+                                <p>男单八强</p>
+                                <p>4-0迪亚斯➡️4-0哈贝松➡️4-0李尚洙➡️4-1林昀儒➡️1-4马龙</p>
+                            </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/durban.png" alt="" class="img" >
+                            <h1>德班世乒赛</h1>
+                            <span>
+                                <p>🐰林高远</p>
+                                <p>男双八强</p>
+                                <p>（搭档林诗栋）</p>
+                                <p>3-0张本智和/吉村真晴➡️3-0泽林卡/皮斯特耶➡️3-0托马斯/达科➡️1-3樊振东/王楚钦 ​</p>
+                            </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/wtt4.png" alt="" class="img" >
+                            <h1>WTT常规挑战赛萨格勒布</h1>
+                            <span>
+                                <p>🐰林高远</p>
+                                <p>男单冠军🥇</p>
+                                <p>3-0梁俨苧➡️3-0理卡多·沃尔瑟➡️3-0周启豪➡️3-0向鹏➡️4-3樊振东 ​</p>
+                            </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/wtt4.png" alt="" class="img" >
+                            <h1>WTT常规挑战赛萨格勒布</h1>
+                            <span>
+                                <p>🐰林高远</p>
+                                <p>男双亚军🥈</p>
+                                <p>（搭档梁靖崑）</p>
+                                <p>3-0德赛/阿昌塔➡️3-2阿拉米扬/阿拉米安➡️3-0关文皓/李汉铭➡️1-3林诗栋/袁励岑</p>
+                            </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/wtt4.png" alt="" class="img" >
+                            <h1>WTT常规挑战赛萨格勒布</h1>
+                            <span>
+                                <p>🐰林高远</p>
+                                <p>混双八强</p>
+                                <p>（搭档王艺迪）</p>
+                                <p>3-1伊沃·本/拉科瓦茨➡️2-3王楚钦/孙颖莎 ​</p>
+                            </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/wtt1.png" alt="" class="img" >
+                            <h1>WTT球星挑战赛卢布尔雅那</h1>
+                            <span>
+                                <p>🐟王曼昱</p>
+                                <p>女单四强</p>
+                                <p>3-0肖瑶茜➡️3-0长崎美柚➡️3-1木原美悠➡️0-3孙颖莎 ​</p>
+                            </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/wtt1.png" alt="" class="img" >
+                            <h1>WTT球星挑战赛卢布尔雅那</h1>
+                            <span>
+                                <p>🐟王曼昱</p>
+                                <p>女双八强</p>
+                                <p>（搭档陈梦）</p>
+                                <p>3-1王歆茹/周靖祎➡️2-3巴拉佐娃/马特洛娃</p>
+                            </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/wtt1.png" alt="" class="img" >
+                            <h1>WTT球星挑战赛卢布尔雅那</h1>
+                            <span>
+                                <p>🐰林高远</p>
+                                <p>男双八强</p>
+                                <p>（搭档梁靖崑）</p>
+                                <p>3-0林兆恒/皮斯特耶➡️1-3艾利克斯·勒布伦/费利克斯·勒布伦 ​</p>
+                            </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/wtt1.png" alt="" class="img" >
+                            <h1>WTT球星挑战赛卢布尔雅那</h1>
+                            <span>
+                                <p>🐰林高远</p>
+                                <p>混双四强</p>
+                                <p>（搭档王艺迪）</p>
+                                <p>3-0纳纳塞卡兰/巴特拉➡️3-2林昀儒/陈思羽➡️1-3梁靖崑/钱天一</p>
+                            </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/cttsl.jpg" alt="" class="img" >
+                            <h1>乒超联赛第一阶段</h1>
+                            <span>
+                                <p>🐟王曼昱</p>
+                                <p>山东鲁能3-0龙江惠民保</p>
+                                <p>🐟王曼昱3-1郭雨涵</p>
+                                <p>山东鲁能3-0华东理工大学</p>
+                                <p>🐟王曼昱3-2王艺迪</p>
+                                <p>山东鲁能3-1上海龙腾</p>
+                                <p>🐟王曼昱3-0杨屹韵</p>
+                                <p>🐟王曼昱3-0孙铭阳</p>
+                                </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/cttsl.jpg" alt="" class="img" >
+                            <h1>乒超联赛第一阶段</h1>
+                            <span>
+                                <p>🐟王曼昱</p>
+                                <p>山东鲁能3-0成都高新若水居</p>
+                                <p>🐟王曼昱3-1郭艳</p>
+                                <p>山东鲁能3-2深圳大学</p>
+                                <p>🐟王曼昱3-1孙颖莎</p>
+                                <p>🐟王曼昱2-3蒯曼</p>
+                                </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/cttsl.jpg" alt="" class="img" >
+                            <h1>乒超联赛第一阶段</h1>
+                            <span>
+                                <p>🐰林高远</p>
+                                <p>汕头明润·廷宴潮菜0-3山东魏桥·向尚运动</p>
+                                <p>🐰林高远/李艺杰1-3周启豪/王楚钦</p>
+                                <p>🐰林高远2-3王楚钦</p>
+                                </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/cttsl.jpg" alt="" class="img" >
+                            <h1>乒超联赛第一阶段</h1>
+                            <span>
+                                <p>🐰林高远</p>
+                                <p>汕头明润·廷宴潮菜3-1江苏习酒京匠·中超</p>
+                                <p>🐰林高远3-2全开源</p>
+                                <p>🐰林高远3-1杨硕</p>
+                                </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/cttsl.jpg" alt="" class="img" >
+                            <h1>乒超联赛第一阶段</h1>
+                            <span>
+                                <p>🐰林高远</p>
+                                <p>汕头明润·廷宴潮菜3-1山东鲁能</p>
+                                <p>🐰林高远3-2马龙</p>
+                                <p>🐰林高远3-1徐瑛彬</p>
+                                </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/cttsl.jpg" alt="" class="img" >
+                            <h1>乒超联赛第一阶段</h1>
+                            <span>
+                                <p>🐰林高远</p>
+                                <p>汕头明润·廷宴潮菜3-2乐旋体育集团</p>
+                                <p>🐰林高远3-2莫雷加德</p>
+                                <p>🐰林高远3-1周雨</p>
+                                </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/cttsl.jpg" alt="" class="img" >
+                            <h1>乒超联赛第一阶段</h1>
+                            <span>
+                                <p>🐰林高远</p>
+                                <p>汕头明润·廷宴潮菜3-2深圳宝安·明金海</p>
+                                <p>🐰林高远/李艺杰3-1程靖淇/牛冠凯</p>
+                                <p>🐰林高远3-2牛冠凯</p>
+                                </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/cttsl.jpg" alt="" class="img" >
+                            <h1>乒超联赛第一阶段</h1>
+                            <span>
+                                <p>🐰林高远</p>
+                                <p>汕头明润·廷宴潮菜0-3上海地产集团</p>
+                                <p>🐰林高远/李艺杰0-3赵子豪/周恺</p>
+                                <p>🐰林高远1-3周恺</p>
+                                </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/cttsl.jpg" alt="" class="img" >
+                            <h1>乒超联赛第一阶段</h1>
+                            <span>
+                                <p>🐰林高远</p>
+                                <p>汕头明润·廷宴潮菜3-1四川丰谷酒业</p>
+                                <p>🐰林高远/徐海东3-2曹巍/孙闻</p>
+                                </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/cttsl.jpg" alt="" class="img" >
+                            <h1>乒超联赛第一阶段</h1>
+                            <span>
+                                <p>🐰林高远</p>
+                                <p>汕头明润·廷宴潮菜3-0黄石基地·华新</p>
+                                <p>🐰林高远/徐海东3-0薛飞/向鹏</p>
+                                <p>🐰林高远3-2向鹏</p>
+                                </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/pyeongchang.jpg" alt="" class="img" >
+                            <h1>平昌亚锦赛</h1>
+                            <span>
+                                <p>🐟王曼昱</p>
+                                <p>女团冠军🏆</p>
+                                <p>🐟王曼昱3-1郭雨涵</p>
+                                <p>3-0马来西亚队➡️3-0中国台北队➡️3-0伊朗队➡️3-0新加坡队➡️3-0日本队➡️3-0韩国队</p>
+                                </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/pyeongchang.jpg" alt="" class="img" >
+                            <h1>平昌亚锦赛</h1>
+                            <span>
+                                <p>🐟王曼昱</p>
+                                <p>女单冠军🥇</p>
+                                <p>3-1徐孝元➡️3-0李昱谆➡️3-0木原美悠➡️3-2陈梦➡️3-2王艺迪➡️3-2孙颖莎 ​</p>
+                                </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/pyeongchang.jpg" alt="" class="img" >
+                            <h1>平昌亚锦赛</h1>
+                            <span>
+                                <p>🐟王曼昱</p>
+                                <p>女双冠军🥇</p>
+                                <p>（搭档陈梦）</p>
+                                <p>3-0何盈/林婧璇➡️3-0萨维塔布特/帕拉南➡️3-0 S·穆克吉/A·穆克吉➡️3-2木原美悠/长崎美柚➡️3-0孙颖莎/王艺迪</p>
+                                </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/pyeongchang.jpg" alt="" class="img" >
+                            <h1>平昌亚锦赛</h1>
+                            <span>
+                                <p>🐰林高远</p>
+                                <p>男团冠军🏆</p>
+                                <p>3-0沙特阿拉伯队➡️3-0卡塔尔队➡️3-0巴基斯坦队➡️3-0中国香港队➡️3-0日本队➡️3-0韩国队➡️3-0中国台北队</p>
+                                </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/pyeongchang.jpg" alt="" class="img" >
+                            <h1>平昌亚锦赛</h1>
+                            <span>
+                                <p>🐰林高远</p>
+                                <p>男单八强</p>
+                                <p>3-0阿诺博耶夫➡️3-0林兆恒➡️3-2筱塚大登➡️2-3马龙</p>
+                                </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/pyeongchang.jpg" alt="" class="img" >
+                            <h1>平昌亚锦赛</h1>
+                            <span>
+                                <p>🐰林高远</p>
+                                <p>男双冠军🥇</p>
+                                <p>（搭档樊振东）</p>
+                                <p>3-0林兆恒/吴柏男➡️3-0图尔基/阿里➡️3-0塔卡/玛纳什·沙➡️3-1安宰贤/朴康贤➡️3-2马龙/王楚钦</p>
+                                </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/pyeongchang.jpg" alt="" class="img" >
+                            <h1>平昌亚锦赛</h1>
+                            <span>
+                                <p>🐰林高远</p>
+                                <p>混双冠军🥇</p>
+                                <p>（搭档王艺迪）</p>
+                                <p>3-0冯耀恩/王歆茹➡️3-0德·席瓦尔/瓦杜➡️3-0张本智和/早田希娜➡️3-2林昀儒/陈思羽➡️3-1梁靖崑/钱天一</p>
+                                </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/hz.png" alt="" class="img" >
+                            <h1>杭州亚运会</h1>
+                            <span>
+                                <p>🐟王曼昱</p>
+                                <p>女团冠军🏆</p>
+                                <p>3-0澳门（3-0张祉萱）➡️3-0哈萨克斯坦队➡️3-0越南（3-0裴玉兰）➡️3-0泰国（3-0奥拉万·帕拉南）➡️3-0日本（3-1张本美和）</p>
+                                </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/hz.png" alt="" class="img" >
+                            <h1>杭州亚运会</h1>
+                            <span>
+                                <p>🐟王曼昱</p>
+                                <p>女双八强</p>
+                                <p>（搭档孙颖莎）</p>
+                                <p>3-0马尔卡博/罗萨琳娜➡️3-0李皓晴/李清韵➡️1-3张本美和/木原美悠 ​</p>
+                                </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/hz.png" alt="" class="img" >
+                            <h1>杭州亚运会</h1>
+                            <span>
+                                <p>🐰林高远</p>
+                                <p>男团冠军🏆</p>
+                                <p>3-0越南➡️3-0阿拉伯里➡️3-0新加坡➡️3-0中国台北➡️3-0韩国</p>
+                                </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/hz.png" alt="" class="img" >
+                            <h1>杭州亚运会</h1>
+                            <span>
+                                <p>🐰林高远</p>
+                                <p>男双八强</p>
+                                <p>（搭档梁靖崑）</p>
+                                <p>3-1户上隼辅/吉村真晴➡️3-1咸柔成/李郑息➡️2-3庄智渊/林昀儒</p>
+                                </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/hz.png" alt="" class="img" >
+                            <h1>杭州亚运会</h1>
+                            <span>
+                                <p>🐰林高远</p>
+                                <p>混双亚军🥈</p>
+                                <p>（搭档王艺迪）</p>
+                                <p>3-0黎婷德/阮氏娥➡️3-2冯耀恩/王歆茹➡️3-1张本智和/早田希娜➡️4-1张禹珍/田志希➡️1-4王楚钦/孙颖莎</p>
+                                </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/wtt1.png" alt="" class="img" >
+                            <h1>WTT球星挑战赛兰州</h1>
+                            <span>
+                                <p>🐟王曼昱</p>
+                                <p>女单四强</p>
+                                <p>3-0吴咏琳➡️3-2陈熠➡️3-0刘炜珊➡️2-3孙颖莎 ​</p>
+                            </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/wtt1.png" alt="" class="img" >
+                            <h1>WTT球星挑战赛兰州</h1>
+                            <span>
+                                <p>🐟王曼昱</p>
+                                <p>女双冠军🥇</p>
+                                <p>（搭档陈梦）</p>
+                                <p>3-2陈幸同/钱天一➡️3-0崔孝珠/朱芊曦➡️3-0田志希/申裕斌</p>
+                            </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/wtt1.png" alt="" class="img" >
+                            <h1>WTT球星挑战赛兰州</h1>
+                            <span>
+                                <p>🐰林高远</p>
+                                <p>男单四强</p>
+                                <p>3-1户上隼辅➡️3-1蒂姆·波尔➡️3-1张本智和➡️0-3王楚钦</p>
+                            </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/wtt1.png" alt="" class="img" >
+                            <h1>WTT球星挑战赛兰州</h1>
+                            <span>
+                                <p>🐟🐰混双八强</p>
+                                <p>3-0张安/梁吉善➡️1-3早田希娜/张本智和</p>
+                            </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/yz.png" alt="" class="img" >
+                            <h1>扬州全锦</h1>
+                            <span>
+                                <p>🐟王曼昱</p>
+                                <p>女单铜牌🥉</p>
+                                <p>3-0吴洋晨(浙江队)➡️3-0范思琦(山东队)➡️2-3王艺迪(辽宁金牛财经队) ​</p>
+                            </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/yz.png" alt="" class="img" >
+                            <h1>扬州全锦</h1>
+                            <span>
+                                <p>🐰林高远</p>
+                                <p>男单八强</p>
+                                <p>3-0梁俨苧(河北队)➡️INJ（伤退）</p>
+                            </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/yz.png" alt="" class="img" >
+                            <h1>扬州全锦</h1>
+                            <span>
+                                <p>🐟🐰混双铜牌🥉</p>
+                                <p>3-0刘佳琪/赵钊彦(上海地产集团队)➡️3-0覃予萱/黄友政(北京队)➡️2-3刘炜珊/刘炜珊(天津729女队/浙江队)</p>
+                            </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/wtt3.png" alt="" class="img" >
+                            <h1>WTT法兰克福冠军赛</h1>
+                            <span>
+                                <p>🐟王曼昱</p>
+                                <p>女单亚军🥈</p>
+                                <p>3-0萨马拉➡️3-1袁嘉楠➡️3-2朱芊曦➡️4-1早田希娜➡️0-4王艺迪​</p>
+                            </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/wtt4.png" alt="" class="img" >
+                            <h1>WTT常规挑战赛太原</h1>
+                            <span>
+                                <p>🐟王曼昱</p>
+                                <p>女单冠军🥇</p>
+                                <p>3-0林依诺➡️3-2朱芊曦➡️3-0木原美悠➡️4-1王艺迪 ​</p>
+                            </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/wtt4.png" alt="" class="img" >
+                            <h1>WTT常规挑战赛太原</h1>
+                            <span>
+                                <p>🐰林高远</p>
+                                <p>男单四强</p>
+                                <p>3-0庄智渊➡️3-1吉村真晴➡️3-1吴晙诚➡️1-3梁靖崑</p>
+                            </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/wtt4.png" alt="" class="img" >
+                            <h1>WTT常规挑战赛太原</h1>
+                            <span>
+                                <p>🐰林高远</p>
+                                <p>男双冠军🥇</p>
+                                <p>（搭档林诗栋）</p>
+                                <p>3-0林兆恒/马金宝➡️3-1黄镇廷 /何钧杰➡️3-2王楚钦/梁靖崑 ​</p>
+                            </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/wtt4.png" alt="" class="img" >
+                            <h1>WTT常规挑战赛太原</h1>
+                            <span>
+                                <p>🐟🐰混双四强</p>
+                                <p>3-1朱芊曦/赵大成➡️1-3蒯曼/林诗栋</p>
+                            </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/cd.webp" alt="" class="img" >
+                            <h1>成都混合团体世界杯</h1>
+                            <span>
+                                <p>团体冠军🏆</p>
+                                <p>中国8:0瑞典</p>
+                                <p>🐟王曼昱/林高远🐰3-0C·卡尔伯格/卡尔森</p>
+                                <p>中国8-0中国香港</p>
+                                <p>中国8-2波多黎各</p>
+                                <p>🐟王曼昱1-2A·迪亚兹</p>
+                                </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/cd.webp" alt="" class="img" >
+                            <h1>成都混合团体世界杯</h1>
+                            <span>
+                                <p>团体冠军🏆</p>
+                                <p>中国8:1斯洛伐克</p>
+                                <p>🐰林高远/王艺迪2-1雅各布·泽林卡/塔蒂娜·库库洛</p>
+                                <p>🐟王曼昱3-0芭芭拉·巴拉佐娃</p>
+                                </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/cd.webp" alt="" class="img" >
+                            <h1>成都混合团体世界杯</h1>
+                            <span>
+                                <p>团体冠军🏆</p>
+                                <p>中国8:1中国台北</p>
+                                <p>中国8:1法国</p>
+                                <p>🐟王曼昱3-0帕瓦德</p>
+                                </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/cd.webp" alt="" class="img" >
+                            <h1>成都混合团体世界杯</h1>
+                            <span>
+                                <p>团体冠军🏆</p>
+                                <p>中国8:1德国</p>
+                                <p>🐟王曼昱3-0单晓娜</p>
+                                </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/cd.webp" alt="" class="img" >
+                            <h1>成都混合团体世界杯</h1>
+                            <span>
+                                <p>团体冠军🏆</p>
+                                <p>中国8:5日本</p>
+                                <p>🐟王曼昱3-0早田希娜</p>
+                                <p>🐟王曼昱/陈梦2-1张本美和/木原美悠</p>
+                                </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/cd.webp" alt="" class="img" >
+                            <h1>成都混合团体世界杯</h1>
+                            <span>
+                                <p>团体冠军🏆</p>
+                                <p>中国8:1韩国</p>
+                                <p>🐟王曼昱3-0金娜英</p>
+                                </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/wtt5.png" alt="" class="img" >
+                            <h1>WTT女子总决赛名古屋</h1>
+                            <span>
+                                <p>🐟王曼昱</p>
+                                <p>女单八强</p>
+                                <p>3-0杨晓欣➡️0-3陈幸同</p>
+                                </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/wtt5.png" alt="" class="img" >
+                            <h1>WTT女子总决赛名古屋</h1>
+                            <span>
+                                <p>🐟王曼昱</p>
+                                <p>女双冠军🥇</p>
+                                <p>（搭档孙颖莎）</p>
+                                <p>3-0琳达/克里斯蒂娜➡️3-1陈梦/王艺迪➡️3-1长崎美柚/木原美悠</p>
+                                </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/cttsl.jpg" alt="" class="img" >
+                            <h1>乒超联赛第二阶段</h1>
+                            <span>
+                                <p>🐟王曼昱</p>
+                                <p>女团亚军🥈</p>
+                                <p>女子MVP</p>
+                                <p>山东鲁能3-1上海龙腾</p>
+                                <p>王曼昱3-2张瑞</p>
+                                <p>王曼昱3-1孙铭阳</p>
+                                </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/cttsl.jpg" alt="" class="img" >
+                            <h1>乒超联赛第二阶段</h1>
+                            <span>
+                                <p>🐟王曼昱</p>
+                                <p>女团亚军🥈</p>
+                                <p>女子MVP</p>
+                                <p>➡️山东鲁能2-3深圳大学</p>
+                                <p>王曼昱3-2孙颖莎</p>
+                                <p>王曼昱3-0蒯曼</p>
+                                </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/cttsl.jpg" alt="" class="img" >
+                            <h1>乒超联赛第二阶段</h1>
+                            <span>
+                                <p>🐰林高远</p>
+                                <p>男团四强</p>
+                                <p>汕头明润·廷宴潮菜1-3山东魏桥·向尚运动</p>
+                                <p>徐海东/林高远3-0王楚钦/周启豪</p>
+                                <p>林高远0-3王楚钦</p>
+                                </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+
+<script>
+    // 获取所有的item元素
+    var items = document.getElementsByClassName('item');
+    // 循环遍历每个item
+    for (var i = 0; i < items.length; i++) {
+        // 获取当前item
+        var item = items[i];
+        var frame = item.getElementsByClassName('frame')[0];
+        var frontBox = frame.getElementsByClassName('front')[0];
+        var leftBox = frame.getElementsByClassName('left')[0];
+        var rightBox = frame.getElementsByClassName('right')[0];
+    }
+    (function () {
+        "use strict";
+        var shell = document.getElementsByClassName('shell')[0];
+        var slider = shell.getElementsByClassName('shell_slider')[0];
+        var items = shell.getElementsByClassName('item');
+        var prevBtn = shell.getElementsByClassName('prev')[0];
+        var nextBtn = shell.getElementsByClassName('next')[0];
+        // 定义变量
+        var width, height, totalWidth, margin = 20,
+            currIndex = 0,
+            interval, intervalTime = 3000;
+        function init() {
+            // 初始化函数
+            resize();
+            move(Math.floor(items.length/66));
+            bindEvents();
+            timer();
+        }
+        function resize() {
+            // 窗口大小变化时调整大小
+            width = Math.max(window.innerWidth * .20, 275);
+            height = window.innerHeight * .5;
+            totalWidth = width * items.length;
+            // 设置slider宽度
+            slider.style.width = totalWidth + "px";
+            // 设置每个item的宽度和高度
+            for (var i = 0; i < items.length; i++) {
+                let item = items[i];
+                item.style.width = (width - (margin * 2)) + "px";
+                item.style.height = height + "px";
+            }
+        }
+        function bindEvents() {
+            // 窗口大小变化时调整大小
+            window.onresize = resize;
+            // 点击prev按钮切换item
+            prevBtn.addEventListener('click', () => { prev(); });
+            nextBtn.addEventListener('click', () => { next(); });
+        }
+        init();
+        function move(index) {
+            // 移动shell到指定的item
+            if (index < 1) index = items.length;
+            if (index > items.length) index = 1;
+            currIndex = index;
+            // 遍历所有item
+            for (var i = 0; i < items.length; i++) {
+                let item = items[i],
+                    box = item.getElementsByClassName('frame')[0];
+                if (i == (index - 1)) {
+                    // 当前item添加active类并设置3D效果
+                    item.classList.add('item--active');
+                    box.style.transform = "perspective(1200px)";
+                } else {
+                    // 其他item移除active类并设置3D效果
+                    item.classList.remove('item--active');
+                    box.style.transform = "perspective(1200px) rotateY(" + (i < (index - 1) ? 40 : -40) + "deg)";
+                }
+            }
+            // 移动slider
+            slider.style.transform = "translate3d(" + ((index * -width) + (width / 2) + window.innerWidth / 2) + "px, 0, 0)";
+        }
+        function timer() {
+            // 定时器，自动切换shell
+            clearInterval(interval);
+            interval = setInterval(() => {
+                move(++currIndex);
+            }, intervalTime);
+        }
+        // 切换item
+        function prev() {
+            move(--currIndex);
+            timer();
+        }
+        function next() {
+            move(++currIndex);
+            timer();
+        }
+    function R() {
+    var body = document.getElementsByTagName('body')[0];
+    var html = document.getElementsByTagName('html')[0];
+    var width = html.clientWidth;
+    var height =  html.clientHeight;
+    var max = width > height ? width : height;
+    var min = width > height ? height : width;
+    body.style.width = max + "px";
+    body.style.height = min + "px";
+    }
+    R();
+    window.addEventListener("R", R)
+    })();
+</script>
+
+</html>
