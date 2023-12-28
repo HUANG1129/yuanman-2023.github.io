@@ -24,26 +24,27 @@
         height: 100%;
         overflow: hidden;
     }
+    body {
+    height: 100vh;
+    overflow: hidden;
+    background: black;
+    margin-bottom: 50px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("./img/ym2023L.jpg");
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    background-size: 100% auto;
+    justify-content: center;
+    }
+    @media screen and (orientation:portrait) {
         body {
-            height: 100vh;
-            overflow: hidden;
-            background: black;
-            margin-bottom: 50px;
-            background-repeat: no-repeat;
-            background-position: center;
-            background-image: url("./img/ym2023L.jpg");
-            background-attachment: fixed;  
-            display: flex;
-            align-items: center;
-            background-size: 100% auto ;
-            justify-content: center;
-            @media screen and (orientation:portrait) {
-            align-items: flex;
-            background-size: auto 100%;
-            background-image:url("./img/ym2023S.jpg");
+        background-size: auto 100%;
+        background-image: url("./img/ym2023S.jpg");
         transform-origin: 0 0;
         transform: rotateZ(90deg) translateY(-100%);
-    }
+        }
     }
         /* 设置.shell元素为相对定位，flex布局，水平和垂直居中对齐，宽度和高度为100%，盒模型为border-box，背景颜色为rgba(99, 99, 99, 0.8) */
         .shell {
@@ -140,7 +141,7 @@
         .box {
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            padding-top: 20px;
             align-items: center;
             position: absolute;
             width: 100%;
@@ -150,7 +151,7 @@
             transform-style: preserve-3d;
         }
         .box img{
-            position: absolute;
+            display: block;
             top: 20px;
             width: 80%;
             height: 15%;
@@ -170,7 +171,7 @@
         .box h1 {
             text-shadow: 0 0 30px #1f05b4;
             font-size: 18px;
-            position: absolute;
+            display: block;
             top: 70px;
             @media screen and (orientation:portrait)
             {
@@ -179,7 +180,7 @@
         }
 
         .box span {
-            position: absolute;
+            display: block;
             top: 110px;
             padding: 0 25px;
             text-shadow: 0 0 10px #1f05b4;
@@ -187,6 +188,10 @@
             {
                 top: 100px;
             }
+        }
+
+        p{
+            line-height: 1.4em;
         }
 
         /* 设置.front、.left和.right元素的盒阴影为0 0 50px #ffffff，背景图大小为cover */
@@ -220,6 +225,7 @@
             transform: translate3d(-1px, 0, -60px) rotateY(90deg);
             transform-origin: 100%;
         }
+
     </style>
 </head>
 
@@ -272,8 +278,7 @@
                             <h1>WTT新加坡大满贯</h1>
                             <span>
                                 <p>🐟王曼昱</p>
-                                <p>女双冠军🥇</p>
-                                <p>（搭档孙颖莎）</p>
+                                <p>女双冠军🥇（/孙颖莎）</p>
                                 <p>3-0陈思羽/李皓晴➡️3-1朱成竹/杜凯琹➡️3-0申裕斌/田志希➡️3-2陈梦/王艺迪 ​ ​</p>
                             </span>
                         </div>
@@ -289,8 +294,7 @@
                             <h1>WTT新加坡大满贯</h1>
                             <span>
                                 <p>🐟王曼昱</p>
-                                <p>混双四强</p>
-                                <p>（搭档樊振东）</p>
+                                <p>混双四强（/樊振东）</p>
                                 <p>3-1梅谢芙/阿萨尔➡️3-2斯佐科斯/约内斯库➡️3-1卡尔伯格/莫雷加德➡️0-3早田希娜/张本智和​ ​</p>
                             </span>
                         </div>
@@ -370,8 +374,7 @@
                             <h1>WTT球星挑战赛曼谷</h1>
                             <span>
                                 <p>🐰林高远</p>
-                                <p>男双冠军🥇</p>
-                                <p>（搭档林诗栋）</p>
+                                <p>男双冠军🥇（/林诗栋）</p>
                                 <p>3-0巴德/皮卡德➡️3-0陈颢桦/姚钧涛➡️3-1安宰贤/赵胜敏➡️3-0张禹珍/林钟勋 ​</p>
                             </span>
                         </div>
@@ -387,8 +390,7 @@
                             <h1>WTT球星挑战赛曼谷</h1>
                             <span>
                                 <p>🐰林高远</p>
-                                <p>混双冠军🥇</p>
-                                <p>（搭档陈幸同）</p>
+                                <p>混双冠军🥇（/陈幸同）</p>
                                 <p>3-1林诗栋/蒯曼➡️3-0沃克/霍婷婷󠁧󠁢󠁥󠁮󠁧󠁿➡️3-0户上隼辅/张本美和➡️3-2林钟勋/申裕斌 ​</p>
                             </span>
                         </div>
@@ -420,8 +422,7 @@
                             <h1>德班世乒赛</h1>
                             <span>
                                 <p>🐟王曼昱</p>
-                                <p>女双四强🥉</p>
-                                <p>（搭档孙颖莎）</p>
+                                <p>女双四强🥉（/孙颖莎）</p>
                                 <p>3-0阿库拉/奇塔莱➡️3-0杜凯琹/朱成竹➡️3-0郑怡静/李昱谆➡️0-3田志希/申裕斌</p>
                             </span>
                         </div>
@@ -453,8 +454,7 @@
                             <h1>德班世乒赛</h1>
                             <span>
                                 <p>🐰林高远</p>
-                                <p>男双八强</p>
-                                <p>（搭档林诗栋）</p>
+                                <p>男双八强（/林诗栋）</p>
                                 <p>3-0张本智和/吉村真晴➡️3-0泽林卡/皮斯特耶➡️3-0托马斯/达科➡️1-3樊振东/王楚钦 ​</p>
                             </span>
                         </div>
@@ -486,8 +486,7 @@
                             <h1>WTT常规挑战赛萨格勒布</h1>
                             <span>
                                 <p>🐰林高远</p>
-                                <p>男双亚军🥈</p>
-                                <p>（搭档梁靖崑）</p>
+                                <p>男双亚军🥈（/梁靖崑）</p>
                                 <p>3-0德赛/阿昌塔➡️3-2阿拉米扬/阿拉米安➡️3-0关文皓/李汉铭➡️1-3林诗栋/袁励岑</p>
                             </span>
                         </div>
@@ -504,8 +503,7 @@
                             <h1>WTT常规挑战赛萨格勒布</h1>
                             <span>
                                 <p>🐰林高远</p>
-                                <p>混双八强</p>
-                                <p>（搭档王艺迪）</p>
+                                <p>混双八强（/王艺迪）</p>
                                 <p>3-1伊沃·本/拉科瓦茨➡️2-3王楚钦/孙颖莎 ​</p>
                             </span>
                         </div>
@@ -537,8 +535,7 @@
                             <h1>WTT球星挑战赛卢布尔雅那</h1>
                             <span>
                                 <p>🐟王曼昱</p>
-                                <p>女双八强</p>
-                                <p>（搭档陈梦）</p>
+                                <p>女双八强（/陈梦）</p>
                                 <p>3-1王歆茹/周靖祎➡️2-3巴拉佐娃/马特洛娃</p>
                             </span>
                         </div>
@@ -554,8 +551,7 @@
                             <h1>WTT球星挑战赛卢布尔雅那</h1>
                             <span>
                                 <p>🐰林高远</p>
-                                <p>男双八强</p>
-                                <p>（搭档梁靖崑）</p>
+                                <p>男双八强（/梁靖崑）</p>
                                 <p>3-0林兆恒/皮斯特耶➡️1-3艾利克斯·勒布伦/费利克斯·勒布伦 ​</p>
                             </span>
                         </div>
@@ -571,8 +567,7 @@
                             <h1>WTT球星挑战赛卢布尔雅那</h1>
                             <span>
                                 <p>🐰林高远</p>
-                                <p>混双四强</p>
-                                <p>（搭档王艺迪）</p>
+                                <p>混双四强（/王艺迪）</p>
                                 <p>3-0纳纳塞卡兰/巴特拉➡️3-2林昀儒/陈思羽➡️1-3梁靖崑/钱天一</p>
                             </span>
                         </div>
@@ -590,8 +585,36 @@
                                 <p>🐟王曼昱</p>
                                 <p>山东鲁能3-0龙江惠民保</p>
                                 <p>🐟王曼昱3-1郭雨涵</p>
+                                </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/cttsl.jpg" alt="" class="img" >
+                            <h1>乒超联赛第一阶段</h1>
+                            <span>
+                                <p>🐟王曼昱</p>
                                 <p>山东鲁能3-0华东理工大学</p>
                                 <p>🐟王曼昱3-2王艺迪</p>
+                                </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/cttsl.jpg" alt="" class="img" >
+                            <h1>乒超联赛第一阶段</h1>
+                            <span>
+                                <p>🐟王曼昱</p>
                                 <p>山东鲁能3-1上海龙腾</p>
                                 <p>🐟王曼昱3-0杨屹韵</p>
                                 <p>🐟王曼昱3-0孙铭阳</p>
@@ -611,6 +634,20 @@
                                 <p>🐟王曼昱</p>
                                 <p>山东鲁能3-0成都高新若水居</p>
                                 <p>🐟王曼昱3-1郭艳</p>
+                                </span>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="./img/cttsl.jpg" alt="" class="img" >
+                            <h1>乒超联赛第一阶段</h1>
+                            <span>
+                                <p>🐟王曼昱</p>
                                 <p>山东鲁能3-2深圳大学</p>
                                 <p>🐟王曼昱3-1孙颖莎</p>
                                 <p>🐟王曼昱2-3蒯曼</p>
@@ -765,7 +802,7 @@
                                 <p>🐟王曼昱</p>
                                 <p>女团冠军🏆</p>
                                 <p>🐟王曼昱3-1郭雨涵</p>
-                                <p>3-0马来西亚队➡️3-0中国台北队➡️3-0伊朗队➡️3-0新加坡队➡️3-0日本队➡️3-0韩国队</p>
+                                <p>3-0马来西亚➡️3-0中国台北➡️3-0伊朗➡️3-0新加坡➡️3-0日本➡️3-0韩国</p>
                                 </span>
                         </div>
                         <div class="box left"></div>
@@ -796,8 +833,7 @@
                             <h1>平昌亚锦赛</h1>
                             <span>
                                 <p>🐟王曼昱</p>
-                                <p>女双冠军🥇</p>
-                                <p>（搭档陈梦）</p>
+                                <p>女双冠军🥇（/陈梦）</p>
                                 <p>3-0何盈/林婧璇➡️3-0萨维塔布特/帕拉南➡️3-0 S·穆克吉/A·穆克吉➡️3-2木原美悠/长崎美柚➡️3-0孙颖莎/王艺迪</p>
                                 </span>
                         </div>
@@ -814,7 +850,7 @@
                             <span>
                                 <p>🐰林高远</p>
                                 <p>男团冠军🏆</p>
-                                <p>3-0沙特阿拉伯队➡️3-0卡塔尔队➡️3-0巴基斯坦队➡️3-0中国香港队➡️3-0日本队➡️3-0韩国队➡️3-0中国台北队</p>
+                                <p>3-0沙特阿拉伯➡️3-0卡塔尔➡️3-0巴基斯坦➡️3-0中国香港➡️3-0日本➡️3-0韩国➡️3-0中国台北</p>
                                 </span>
                         </div>
                         <div class="box left"></div>
@@ -845,8 +881,7 @@
                             <h1>平昌亚锦赛</h1>
                             <span>
                                 <p>🐰林高远</p>
-                                <p>男双冠军🥇</p>
-                                <p>（搭档樊振东）</p>
+                                <p>男双冠军🥇（/樊振东）</p>
                                 <p>3-0林兆恒/吴柏男➡️3-0图尔基/阿里➡️3-0塔卡/玛纳什·沙➡️3-1安宰贤/朴康贤➡️3-2马龙/王楚钦</p>
                                 </span>
                         </div>
@@ -862,8 +897,7 @@
                             <h1>平昌亚锦赛</h1>
                             <span>
                                 <p>🐰林高远</p>
-                                <p>混双冠军🥇</p>
-                                <p>（搭档王艺迪）</p>
+                                <p>混双冠军🥇（/王艺迪）</p>
                                 <p>3-0冯耀恩/王歆茹➡️3-0德·席瓦尔/瓦杜➡️3-0张本智和/早田希娜➡️3-2林昀儒/陈思羽➡️3-1梁靖崑/钱天一</p>
                                 </span>
                         </div>
@@ -880,7 +914,7 @@
                             <span>
                                 <p>🐟王曼昱</p>
                                 <p>女团冠军🏆</p>
-                                <p>3-0澳门（3-0张祉萱）➡️3-0哈萨克斯坦队➡️3-0越南（3-0裴玉兰）➡️3-0泰国（3-0奥拉万·帕拉南）➡️3-0日本（3-1张本美和）</p>
+                                <p>3-0澳门（3-0张祉萱）➡️3-0哈萨克斯坦➡️3-0越南（3-0裴玉兰）➡️3-0泰国（3-0奥拉万·帕拉南）➡️3-0日本（3-1张本美和）</p>
                                 </span>
                         </div>
                         <div class="box left"></div>
@@ -895,8 +929,7 @@
                             <h1>杭州亚运会</h1>
                             <span>
                                 <p>🐟王曼昱</p>
-                                <p>女双八强</p>
-                                <p>（搭档孙颖莎）</p>
+                                <p>女双八强（/孙颖莎）</p>
                                 <p>3-0马尔卡博/罗萨琳娜➡️3-0李皓晴/李清韵➡️1-3张本美和/木原美悠 ​</p>
                                 </span>
                         </div>
@@ -928,8 +961,7 @@
                             <h1>杭州亚运会</h1>
                             <span>
                                 <p>🐰林高远</p>
-                                <p>男双八强</p>
-                                <p>（搭档梁靖崑）</p>
+                                <p>男双八强（/梁靖崑）</p>
                                 <p>3-1户上隼辅/吉村真晴➡️3-1咸柔成/李郑息➡️2-3庄智渊/林昀儒</p>
                                 </span>
                         </div>
@@ -945,8 +977,7 @@
                             <h1>杭州亚运会</h1>
                             <span>
                                 <p>🐰林高远</p>
-                                <p>混双亚军🥈</p>
-                                <p>（搭档王艺迪）</p>
+                                <p>混双亚军🥈（/王艺迪）</p>
                                 <p>3-0黎婷德/阮氏娥➡️3-2冯耀恩/王歆茹➡️3-1张本智和/早田希娜➡️4-1张禹珍/田志希➡️1-4王楚钦/孙颖莎</p>
                                 </span>
                         </div>
@@ -978,8 +1009,7 @@
                             <h1>WTT球星挑战赛兰州</h1>
                             <span>
                                 <p>🐟王曼昱</p>
-                                <p>女双冠军🥇</p>
-                                <p>（搭档陈梦）</p>
+                                <p>女双冠军🥇（/陈梦）</p>
                                 <p>3-2陈幸同/钱天一➡️3-0崔孝珠/朱芊曦➡️3-0田志希/申裕斌</p>
                             </span>
                         </div>
@@ -1027,7 +1057,7 @@
                             <span>
                                 <p>🐟王曼昱</p>
                                 <p>女单铜牌🥉</p>
-                                <p>3-0吴洋晨(浙江队)➡️3-0范思琦(山东队)➡️2-3王艺迪(辽宁金牛财经队) ​</p>
+                                <p>3-0吴洋晨(浙江)➡️3-0范思琦(山东)➡️2-3王艺迪(辽宁金牛财经) ​</p>
                             </span>
                         </div>
                         <div class="box left"></div>
@@ -1043,7 +1073,7 @@
                             <span>
                                 <p>🐰林高远</p>
                                 <p>男单八强</p>
-                                <p>3-0梁俨苧(河北队)➡️INJ（伤退）</p>
+                                <p>3-0梁俨苧(河北)➡️INJ（伤退）</p>
                             </span>
                         </div>
                         <div class="box left"></div>
@@ -1058,7 +1088,7 @@
                             <h1>扬州全锦</h1>
                             <span>
                                 <p>🐟🐰混双铜牌🥉</p>
-                                <p>3-0刘佳琪/赵钊彦(上海地产集团队)➡️3-0覃予萱/黄友政(北京队)➡️2-3刘炜珊/刘炜珊(天津729女队/浙江队)</p>
+                                <p>3-0刘佳琪/赵钊彦(上海地产集团)➡️3-0覃予萱/黄友政(北京)➡️2-3刘炜珊/刘炜珊(天津729女/浙江)</p>
                             </span>
                         </div>
                         <div class="box left"></div>
@@ -1121,8 +1151,7 @@
                             <h1>WTT常规挑战赛太原</h1>
                             <span>
                                 <p>🐰林高远</p>
-                                <p>男双冠军🥇</p>
-                                <p>（搭档林诗栋）</p>
+                                <p>男双冠军🥇（/林诗栋）</p>
                                 <p>3-0林兆恒/马金宝➡️3-1黄镇廷 /何钧杰➡️3-2王楚钦/梁靖崑 ​</p>
                             </span>
                         </div>
@@ -1271,8 +1300,7 @@
                             <h1>WTT女子总决赛名古屋</h1>
                             <span>
                                 <p>🐟王曼昱</p>
-                                <p>女双冠军🥇</p>
-                                <p>（搭档孙颖莎）</p>
+                                <p>女双冠军🥇（/孙颖莎）</p>
                                 <p>3-0琳达/克里斯蒂娜➡️3-1陈梦/王艺迪➡️3-1长崎美柚/木原美悠</p>
                                 </span>
                         </div>
@@ -1369,7 +1397,7 @@
         function init() {
             // 初始化函数
             resize();
-            move(Math.floor(items.length/66));
+            move(Math.floor(items.length/69));
             bindEvents();
             timer();
         }
