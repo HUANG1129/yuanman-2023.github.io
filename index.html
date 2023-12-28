@@ -68,11 +68,13 @@
             left: 50%;
             transform: translateX(-50%);
             bottom: -80px;
-            @media screen and (orientation:portrait)
-            {
+        }
+        @media screen and (orientation:portrait){
+            .button{
                 bottom: 10px;
             }
         }
+
         /* 设置.prev和.next元素过渡动画时间为0.25秒，层级为99999，底部偏移量为5px */
         .prev,
         .next {
@@ -88,12 +90,12 @@
             color: #fff;
             cursor: pointer;
             text-shadow: 0 0 10px #ffffff;
-            @media screen and (orientation:portrait)
-            {
+        }
+        @media screen and (orientation:portrait){
+            .next i{
                 font-size: 45px;
             }
         }
-
         /* 设置.shell_body元素宽度为100%，缩放为0.8倍，上内边距为20px，下内边距为150px */
         .shell_body {
             width: 100%;
@@ -156,11 +158,13 @@
             width: 80%;
             height: 15%;
             object-fit: contain;
-            @media screen and (orientation:portrait)
-            {
+        }
+        @media screen and (orientation:portrait){
+            .box img {
                 top: 15px;
             }
         }
+
         /* 设置.box元素中的h1和span元素颜色为#fff，Z轴平移距离为20px */
         .box h1,
         .box span {
@@ -173,8 +177,9 @@
             font-size: 18px;
             display: block;
             top: 70px;
-            @media screen and (orientation:portrait)
-            {
+        }
+        @media screen and (orientation:portrait){
+            .box h1{
                 top: 50px;
             }
         }
@@ -183,14 +188,14 @@
             display: block;
             top: 110px;
             padding: 0 25px;
-            text-shadow: 0 0 10px #1f05b4;
-            @media screen and (orientation:portrait)
-            {
+            text-shadow: 0 0 10px #1f05b4
+        }
+        @media screen and (orientation:portrait){
+            .box span{
                 top: 100px;
             }
         }
-
-        p{
+        .front span p{
             line-height: 1.4em;
         }
 
